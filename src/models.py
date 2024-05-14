@@ -4,18 +4,10 @@ import backoff
 
 completion_tokens = prompt_tokens = 0
 
-# api_key = os.getenv("OPENAI_API_KEY", "")
-api_key = "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"
-if api_key != "":
-    openai.api_key = api_key
-else:
-    print("Warning: OPENAI_API_KEY is not set")
-
-api_base = os.getenv("OPENAI_API_BASE", "")
-if api_base != "":
-    print("Warning: OPENAI_API_BASE is set to {}".format(api_base))
-    openai.api_base = api_base
-
+OPENAI_API_PATH = os.path.join(os.path.dirname(__file__), '..', 'api.key')
+with open('api.key') as f:
+    openai.api_key = f.read().strip()
+    
 @backoff.on_exception(backoff.expo, openai.OpenAIError)
 def completions_with_backoff(**kwargs):
     return openai.chat.completions.create(**kwargs)
