@@ -11,20 +11,45 @@ You should output in the same format as: Therapy Technique: | .
 Following is an example of the answer format: Therapy Technique: Mentalization Therapy | Humanistic Therapy | Psychodynamic Therapy
 '''
 
-sys_prompt_therapy = "You are a mental health expert who specializes in {therapy_technique} to provide mental health counselling"
 user_prompt_therapy = '''You are given a user input shared by a mentally ill person along with the past history of the same person categorized by social determinants.
-Considering the user input and the past history of the user, your job is to provide mental health support to this person such that it improves the overall mental health
-state of the person and also alleviate the suicidal thoughts (if any) from the user mind. An example is given below:
-
-{example}
-
-You should personalize your response according to the specific scenario of this person i.e., you should mention information provided in the user input as well as the past history
-and then try to develop your response around this information.
+Considering the user input and the past history, your job is to adopt the practices used in {therapy_technique} and provide mental health support to this person such that it improves the overall mental health of the person.
+You firstly need to make a comprehensive personalized plan and then write a comprehensive counselling advice based on that plan. You should personalize your plan and counselling advice
+according to the specific scenario of this person i.e., you should mention information provided in the user input as well as the past history and then try to develop
+your plan/counselling around this information.
 
 User Input: {user_input}
+
 User Past History: {user_past_history}
 
-Therapy Response: your response here
+Therapy Plan:
+Your plan here
+
+Therapy Counsel:
+Your counsel here
+'''
+
+system_vote_prompt = "You are a mental health expert who specializes in evaluating counselling advice provided to mental health patients based on psychotherapy factors"
+user_vote_prompt = '''You are given a user input shared by a mentally ill person along with the past history of the same person categorized by social determinants. Moreover, you are given several choices providing mental counselling advice to this person.
+Your job is to decide which choice is most promising to alleviate feelings of depression, sadness, or hopelessness from this person's mind and improve the overall mental health state of this person.
+Analyze each choice in detail and then assign a score rating (1-10) for 8 factors given below as used in psychotherapy or counselling.
+Finally sum up the scores of each choice for all the 8 factors and then conclude in the last line "The best choice is (s)", where s the integer id of the choice having the maximum overall combined score.:
+
+1. Medium Sensitivity (MS)
+2. Hope and Positive Expectations (HPE)
+3. Persuasiveness (PER)
+4. Emotional Engagement (EEn)
+5. Warmth, Acceptance & Understanding (WAU)
+6. Empathy (EMP)
+7. Alliance-Bond Capacity (ABC)
+8. Alliance Rupture Repair Responsiveness (ARRR)
+
+User Input: {input}
+
+User Past History: {user_past_history}
+
+Counselling Choices:
+
+{counselling_choices}
 '''
 
 standard_prompt = '''
@@ -115,23 +140,6 @@ Humanistic Therapy -> Your counselling advice here by assuming the persona of th
 Interpersonal Therapy -> Your counselling advice here by assuming the persona of therapist dealing in interpersonal therapy
 Mentalization Therapy -> Your counselling advice here by assuming the persona of therapist dealing in mentalization therapy
 Mindfulness Therapy -> Your counselling advice here by assuming the persona of therapist dealing in mindfulness therapy
-'''
-
-# If you were the person who tweeted and you are given serveral choices, decide which choice is most promising to alleviate the suicidal thoughts
-vote_prompt = '''Given a user input detailing an ill mental health issue and several choices providing relevant counselling, decide which choice is most promising to alleviate feelings of depression, sadness, or hopelessness from a user's mind suffering from ill mental health. Analyze each choice in detail and then assign a score rating (1-10) for 8 factors given below as used in psychotherapy or counselling.
-Finally sum up the scores of each choice for all the 8 factors and then conclude in the last line "The best choice is (s)", where s the integer id of the choice having the maximum overall combined score.:
-
-1. Medium Sensitivity (MS)
-2. Hope and Positive Expectations (HPE)
-3. Persuasiveness (PER)
-4. Emotional Engagement (EEn)
-5. Warmth, Acceptance & Understanding (WAU)
-6. Empathy (EMP)
-7. Alliance-Bond Capacity (ABC)
-8. Alliance Rupture Repair Responsiveness (ARRR)
-
-User Input: {input}
-
 '''
 
 compare_prompt = '''Briefly analyze the mental health counselling advice given in the following two passages to thwart the generation of suicidal thoughts in a person's mind. Conclude in the last line "The more suitable passage is 1", "The more suitable passage is 2", or "The two passages are equally suitable".

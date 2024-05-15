@@ -12,9 +12,10 @@ with open(OPENAI_API_PATH) as f:
 def completions_with_backoff(**kwargs):
     return openai.chat.completions.create(**kwargs)
 
-def gpt(user_prompt, model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
+def gpt(user_prompt, system_prompt="You are a helpful assistant", model="gpt-4", temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
 
-    messages = [{"role": "user", "content": user_prompt}]
+    messages = [{"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}]
 
     return chatgpt(messages, model=model, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop)
     
