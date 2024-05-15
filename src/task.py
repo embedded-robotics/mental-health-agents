@@ -94,24 +94,24 @@ class MentalHealthTask():
         return (det_prompt, example_format, sdoh_prompt)        
 
 
-    def test_output(self, idx: int, output: str):
-        output = output.split('Counsel:\n')[-1]
-        prompt = score_prompt + output
-        score_outputs = gpt(prompt, n=5, model='gpt-4')
-        scores = []
-        for score_output in score_outputs:
-            # print(score_output)
-            pattern = r".*suitablity score is (\d+).*"
-            match = re.match(pattern, score_output, re.DOTALL)
-            if match:
-                score = int(match.groups()[0])
-                scores.append(score)
-            else:
-                print(f'------------------score no match: {[score_output]}')
-        print(scores)
-        # print('------------')
-        info = {'rs': scores, 'r': sum(scores) / len(scores) if scores else 0}
-        return info
+    # def test_output(self, idx: int, output: str):
+    #     output = output.split('Counsel:\n')[-1]
+    #     prompt = score_prompt + output
+    #     score_outputs = gpt(prompt, n=5, model='gpt-4')
+    #     scores = []
+    #     for score_output in score_outputs:
+    #         # print(score_output)
+    #         pattern = r".*suitablity score is (\d+).*"
+    #         match = re.match(pattern, score_output, re.DOTALL)
+    #         if match:
+    #             score = int(match.groups()[0])
+    #             scores.append(score)
+    #         else:
+    #             print(f'------------------score no match: {[score_output]}')
+    #     print(scores)
+    #     # print('------------')
+    #     info = {'rs': scores, 'r': sum(scores) / len(scores) if scores else 0}
+    #     return info
     
     def cot_prompt_dynamic_wrap(self, x: str, y:str='') -> str:
         determinant_prompt, example_format = self.get_cot_prompt_data(input=x)
@@ -152,21 +152,21 @@ class MentalHealthTask():
                 print(f'vote no match: {[vote_output]}')
         return vote_results
 
-    @staticmethod
-    def compare_prompt_wrap(x: str, ys: list) -> str:
-        assert len(ys) == 2, 'compare prompt only supports 2 candidates'
-        ys = [y.split('Counsel:\n')[-1] for y in ys]
-        prompt = compare_prompt + f'Counsel 1:\n{ys[0]}\n\Counsel 2:\n{ys[1]}\n'
-        return prompt
+    # @staticmethod
+    # def compare_prompt_wrap(x: str, ys: list) -> str:
+    #     assert len(ys) == 2, 'compare prompt only supports 2 candidates'
+    #     ys = [y.split('Counsel:\n')[-1] for y in ys]
+    #     prompt = compare_prompt + f'Counsel 1:\n{ys[0]}\n\Counsel 2:\n{ys[1]}\n'
+    #     return prompt
     
-    @staticmethod
-    def compare_output_unwrap(compare_output: str):
-        if 'more suitable counsel is 1' in compare_output:
-            return 0
-        elif 'more suitable counsel is 2' in compare_output:
-            return 1
-        elif 'two counsel are similarly suitable' in compare_output:
-            return 0.5
-        else:
-            print(f'-----------------compare no match: {[compare_output]}')
-            return -1
+    # @staticmethod
+    # def compare_output_unwrap(compare_output: str):
+    #     if 'more suitable counsel is 1' in compare_output:
+    #         return 0
+    #     elif 'more suitable counsel is 2' in compare_output:
+    #         return 1
+    #     elif 'two counsel are similarly suitable' in compare_output:
+    #         return 0.5
+    #     else:
+    #         print(f'-----------------compare no match: {[compare_output]}')
+    #         return -1

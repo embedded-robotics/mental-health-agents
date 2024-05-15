@@ -13,55 +13,6 @@ Counsel:
 Your counsel here.
 '''
 
-# Imagine you are the person who gave the input and how likely will this advice affect you to avoid suicidal thoughts
-# Someone who has gone through similar situation
-# Summarize the responses
-
-# cot_prompt_dynamic = '''
-# {det_prompt} and is at high risk of developing suicidal thoughts. Your job is to provide sincere counselling advice to this person to forestall the generation of suicidal thoughts. Following is an example:
-
-# {example}
-
-# The person expresses internal feelings on social media as follows: "{input}"
-# You need to provide counselling advice by taking the role of 3 different personas: (1) Parent (2) Friend (3) Mental Health Counsellor. Using each of the three personas, you firstly need to make a comprehensive plan and then write a counselling advice
-# For each persona, both the plan and counselling should be written in an anonymous way and should not mention the specific persona. For example, you should not mention the phrases such as "as a parent", "as a friend" or "as a mental health counsellor".
-# Your output should be of the following format:
-
-# Plan:
-# Parent -> Your plan here by assuming the persona of the person's parent
-# Friend -> Your plan here by assuming the persona of the person's friend
-# Mental Health Counsellor -> Your plan here by assuming the persona of a mental health counsellor
-
-# Counsel:
-# Parent -> Your counselling advice here by assuming the persona of the person's parent
-# Friend -> Your counselling advice here by assuming the persona of the person's friend
-# Mental Health Counsellor -> Your counselling advice here by assuming the persona of a mental health counsellor
-# '''
-
-# cot_sdoh_prompt_dynamic = '''
-# {det_prompt} and is at high risk of developing suicidal thoughts. Your job is to provide sincere counselling advice to this person to forestall the generation of suicidal thoughts. Following is an example:
-
-# {example}
-
-# The person expresses internal feelings on social media as follows: "{input}"
-
-# {sdoh}
-
-# You need to seriously consider the past history of the user mentioned above and provide counselling advice by taking the role of 3 different personas: (1) Parent (2) Friend (3) Mental Health Counsellor. Using each of the three personas, you firstly need to make a comprehensive plan and then write a counselling advice
-# For each persona, both the plan and counselling should be written in an anonymous way and should not mention the specific persona. For example, you should not mention the phrases such as "as a parent", "as a friend" or "as a mental health counsellor".
-# Your output should be of the following format:
-
-# Plan:
-# Parent -> Your plan here by assuming the persona of the person's parent
-# Friend -> Your plan here by assuming the persona of the person's friend
-# Mental Health Counsellor -> Your plan here by assuming the persona of a mental health counsellor
-
-# Counsel:
-# Parent -> Your counselling advice here by assuming the persona of the person's parent
-# Friend -> Your counselling advice here by assuming the persona of the person's friend
-# Mental Health Counsellor -> Your counselling advice here by assuming the persona of a mental health counsellor
-# '''
-
 cot_prompt_dynamic = '''
 {det_prompt}. Your job is to assume the role of a mental health therapist and provide sincere counselling advice to this person such that it improves the mental health of the person and alleviate the feelings of depression, sadness, or hopelessness from the person's mind.
 You need to personalize your response by considering the specific conditions/concerns highlighted by the person. Following is an example:
@@ -159,7 +110,3 @@ compare_prompt = '''Briefly analyze the mental health counselling advice given i
 
 score_prompt = '''Analyze the following passage in the context that it provides mental heatlh counselling advice to a person struggling with mental health problems, then at the last line conclude "Thus the suitablity score is {s}", where s is an integer from 1 to 10.
 '''
-
-# 2. Use the determinant to pull in the relevant examples from dataset and form a cot prompt while asking the GPT
-# to produce direct counsel (there won't be any plan). Firstly ask the strategy for 5 different personas and then have
-# everyone generate their counsels. At the end we combine the strategies and then have a final counsel
