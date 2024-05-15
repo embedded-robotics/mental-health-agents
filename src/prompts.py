@@ -1,3 +1,32 @@
+sys_prompt_persona = "You are a mental health expert who specializes in assigning different therapy techniques to better deal with a specific mental health scenario."
+user_prompt_persona = '''You are given a user input shared by a mentally ill person along with the past history of the same person categorized by social determinants.
+Considering the user input and the past history of the user, your job is to determine 3 therapy techniques out of the following 8 therapy techniques
+to better improve the overall mental health of the person: (1) Cognitive Behavioral Therapy (2) Exposure Therapy (3) Psychodynamic Therapy (4) Client Centered Therapy
+(5) Humanistic Therapy (6) Interpersonal Therapy (7) Mentalization Therapy (8) Mindfulness Therapy.
+
+User Input: {user_input}
+User Past History: {user_past_history}
+
+You should output in the same format as: Therapy Technique: | .
+Following is an example of the answer format: Therapy Technique: Mentalization Therapy | Humanistic Therapy | Psychodynamic Therapy
+'''
+
+sys_prompt_therapy = "You are a mental health expert who specializes in {therapy_technique} to provide mental health counselling"
+user_prompt_therapy = '''You are given a user input shared by a mentally ill person along with the past history of the same person categorized by social determinants.
+Considering the user input and the past history of the user, your job is to provide mental health support to this person such that it improves the overall mental health
+state of the person and also alleviate the suicidal thoughts (if any) from the user mind. An example is given below:
+
+{example}
+
+You should personalize your response according to the specific scenario of this person i.e., you should mention information provided in the user input as well as the past history
+and then try to develop your response around this information.
+
+User Input: {user_input}
+User Past History: {user_past_history}
+
+Therapy Response: your response here
+'''
+
 standard_prompt = '''
 Provide mental health counselling to the person sharing the following thoughts on social media: {input}
 '''
