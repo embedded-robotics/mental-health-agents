@@ -5,7 +5,7 @@ import backoff
 completion_tokens = prompt_tokens = 0
 
 OPENAI_API_PATH = os.path.join(os.path.dirname(__file__), '..', 'api.key')
-with open('api.key') as f:
+with open(OPENAI_API_PATH) as f:
     openai.api_key = f.read().strip()
     
 @backoff.on_exception(backoff.expo, openai.OpenAIError)

@@ -1,27 +1,21 @@
 import os
 import re
-from tasks.base import Task, DATA_PATH
-from prompts.mentalhealth import *
+from prompts import *
 from models import gpt
 from datasets import load_dataset
 import pandas as pd
-from post_analysis_module import *
+from sdoh_analysis import *
 import json
 
-class MentalHealthTask(Task):
-    """
-    Input (x)   : a text instruction
-    Output (y)  : a text generation
-    Reward (r)  : # TODO
-    Input Example: 
-    Output Example: 
-    """
-    def __init__(self, file='sdoh_prompt_data.json'):
+DATA_PATH = os.path.join(os.path.dirname(__file__), 'data')
+
+class MentalHealthTask():
+    def __init__(self, file='sdoh_prompt.json'):
         """
         file: a json file with user input and SDoH prompt
         """
         super().__init__()
-        path = os.path.join(DATA_PATH, 'mentalhealth', file)
+        path = os.path.join(DATA_PATH, file)
         self.user_input = []
         self.sdoh_prompt = []
         with open(path, 'r') as f:

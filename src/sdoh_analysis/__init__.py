@@ -1,9 +1,9 @@
-from post_analysis_module.sdoh import get_responses as gpt_generate_sdoh, SdohStrength, SdohResponse
+from sdoh_analysis.sdoh import get_responses as gpt_generate_sdoh, SdohStrength, SdohResponse
 import asyncio
 
-from post_analysis_module.similar_docs import get_similar_docs  
+from sdoh_analysis.similar_docs import get_similar_docs  
 
-from post_analysis_module.topic_matching import getPredictions as get_topic_predictions
+from sdoh_analysis.topic_matching import getPredictions as get_topic_predictions
 import typing
 import json
 

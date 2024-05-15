@@ -1,12 +1,12 @@
 import typing
 
 from datasets import load_dataset
-from post_analysis_module.helpers.html_cleaner import strip_tags
+from sdoh_analysis.helpers.html_cleaner import strip_tags
 import os
 
 import numpy as np 
 from tqdm import tqdm
-from post_analysis_module.helpers.loaded_model import model
+from sdoh_analysis.helpers.loaded_model import model
 
 from joblib import Memory
 memory = Memory("datasets")

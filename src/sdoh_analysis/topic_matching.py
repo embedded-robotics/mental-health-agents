@@ -1,4 +1,4 @@
-from post_analysis_module.helpers.loaded_model import model 
+from sdoh_analysis.helpers.loaded_model import model 
 import typing
 
 
