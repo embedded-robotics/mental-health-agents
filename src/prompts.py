@@ -71,6 +71,30 @@ Summarized Counselling:
 Your summarized response here
 '''
 
+system_evaluation_prompt = "You are a mental health expert who specializes in evaluating counselling advice provided to mental health patients based on psychotherapy factors"
+user_evaluation_prompt = '''You are given a mental counselling advice written by a mental health counsellor for a specific person.
+Your job is to determine how promising is this advice to alleviate feelings of depression, sadness, or hopelessness from a person's mind and improve the overall mental health state of this person.
+Analyze each choice in detail and then assign a score rating (1-10) for 8 factors used in psychotherapy or counselling as given below:
+
+1. Medium Sensitivity (MS)
+2. Hope and Positive Expectations (HPE)
+3. Persuasiveness (PER)
+4. Emotional Engagement (EEn)
+5. Warmth, Acceptance & Understanding (WAU)
+6. Empathy (EMP)
+7. Alliance-Bond Capacity (ABC)
+8. Alliance Rupture Repair Responsiveness (ARRR)
+
+In your response, only return score for each psychotherapy factor without any additional description. Finally sum up the scores of all the 8 factors and then conclude in the last line "The total score is (s)", where s the overall combined score.
+
+Counselling Choices:
+{counselling_advice}
+
+Conunselling Evaluation:
+Your response here
+'''
+
+
 # standard_prompt = '''
 # Provide mental health counselling to the person sharing the following thoughts on social media: {input}
 # '''
