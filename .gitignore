@@ -1,3 +1,4 @@
 *.key
 src/sdoh_analysis/models/
-src/dpo/sft/*
+src/dpo/counsel_data_sft/*
+src/dpo/counsel_data_dpo/*
