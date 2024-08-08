@@ -5,3 +5,4 @@ src/dpo/counsel_data_dpo/*
 src/dpo/llama-3-8b-chat-doctor/*
 src/dpo/llama-3-8b-counsel/*
 src/dpo/llama-3-8b-base-counsel/*
+src/dpo/llama-3-8b-base-chat-doctor/*
