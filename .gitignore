@@ -10,3 +10,5 @@ src/dpo/llama-3-8b-stack-exchange/*
 src/dpo/llama-3-8b-stack-exchange-sft/*
 src/dpo/llama-3-8b-stack-exchange-dpo/*
 src/dpo/llama-3-8b-stack-exchange-dpo-merged/*
+src/dpo/llama-3-8b-counsel-chat-dpo-merged/*
+src/dpo/llama-3-8b-counsel-chat-sft-merged/*
