@@ -109,6 +109,9 @@ for i in tqdm(range(0, len(counsel_dataset))):
     prompt_questions_list.append(prompt_question)
     prompt_output_list.append(prompts_output)
 
+    print(prompt_question)
+    print(prompts_output)
+    print()
 # %%
 response_dict = {'counsel_chat_question': prompt_questions_list,
                  'gpt4_response': prompt_output_list}
