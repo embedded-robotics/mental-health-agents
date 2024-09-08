@@ -17,6 +17,17 @@ User Input: {user_input}
 Counselling Advice:
 '''
 
+system_cot_prompt_revised1 = "You are a mental health expert specializing in providing counselling advice to individuals facing everyday mental challenges."
+user_cot_prompt_revised1 = '''You receive a post from a person experiencing mental health challenges on social media. Your job is to provide comprehensive counselling advice to this person such that it improves the overall mental health and wellbeing of the person.
+While crafting your counselling advice, you must take a creative approach such that your response is personalized, affirm the patient experience, depict empathic behavior and persusive enough for the patient to take the suggested actions.
+Your final output must contain only the counselling advice which you crafted in context of user input:
+
+User Input: {user_input}
+
+Counselling Advice:
+'''
+
+
 system_rank_prompt = "You are a mental health expert who specializes in evaluating counselling advice provided to individuals facing everyday mental challenges."
 user_rank_prompt = '''You receive a post from a person experiencing mental health challenges on social media. Moreover, you are given two counselling responses provided to this person by mental health professionals namely "LLAMA3_Response" and "GPT4_Response"
 Your job is to decide which response is most promising to improve the overall mental health and wellbeing of the person.
@@ -53,7 +64,6 @@ Output:
 
 system_cot_prompt = "You are a mental health expert specializing in providing counselling advice to individuals facing everyday mental challenges."
 user_cot_prompt = '''You receive a post from a person experiencing mental health challenges on social media. Your job is to provide comprehensive counselling advice to this person such that it improves the overall mental health and wellbeing of the person.
-While crafting your counselling advice, you must take a creative approach such that your response is personalized, affirm the patient experience, depict empathic behavior and persusive enough for the patient to take the suggested actions.
 Your final output must contain only the counselling advice which you crafted in context of user input:
 
 User Input: {user_input}
