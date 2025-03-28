@@ -8,3 +8,4 @@ src/dpo/llama-3-8b-glan-sft-merged/*
 nohup.out
 src/data/*
 src/dpo/llama32-sft-fine-tune-counselchat/*
+src/dpo/unsloth_compiled_cache/*
